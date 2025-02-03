@@ -47,9 +47,7 @@ class AuthController extends Controller
       return redirect('/')->with('success', 'Registrasi Berhasil, Silahkan Login');
    }
 
-   public function register(){
-    return view('auth.register');
-   }
+   
 
    public function logout(Request $request){
       Auth::logout();

@@ -9,11 +9,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        @can('kepala_produksi')
-                            <a href="/penilaian/create" class="btn btn-primary">Form Penilaian</a>
-                        @endcan
-
-
+                        <a href="/kriteria/create" class="btn btn-primary">Tambah Data</a>
                     </div>
                     <div class="card-body">
                         @if (session()->has('success'))
@@ -26,18 +22,30 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Tanggal</th>
-                                        <th>Action</th>
+                                        <th>Kriteria</th>
+                                        <th>Bobot (%)</th>
+                                        <th>action</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($penilaian as $item)
+                                    @foreach ($kriteria as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ date('d M Y', strtotime($item->tanggal_penilaian)) }}</td>
+                                            <td>{{ $item->kriteria }}</td>
+                                            <td>{{ $item->bobot }}</td>
+
                                             <td>
-                                                <a href="/penilaian/{{ $item->id }}" class="btn btn-success ">detail</a>
+                                                <div class="form-button-action">
+                                                    <form action="/kriteria/{{ $item->id }}" method="post">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" style="border: none"
+                                                            onclick="return confirm('Apakah anda yakin ingin menghapusnya?')"><i
+                                                                class="fa fa-trash text-danger"></i></button>
+                                                    </form>
+
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

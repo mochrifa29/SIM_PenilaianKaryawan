@@ -11,7 +11,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-10">
-                                <h4>Tahun : {{ $periode }}</h4>
+                                <h4>Tanggal : {{ date('d M Y', strtotime($tanggal)) }}</h4>
                             </div>
                             <div class="col-2">
                                 <a href="/laporan" class="btn btn-warning text-white">Kembali</a>

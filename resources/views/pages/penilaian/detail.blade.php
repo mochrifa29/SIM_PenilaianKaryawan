@@ -11,11 +11,14 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-8">
-                                <h4>Tahun : {{ $periode }}</h4>
+                                <h4>Tanggal : {{ date('d M Y', strtotime($tanggal)) }}</h4>
                             </div>
                             <div class="col-4">
                                 <a href="/penilaian" class="btn btn-warning text-white">Kembali</a>
-                                <a href="/hitung/{{ $periode }}" class="btn btn-primary">Hitung Semua</a>
+                                @can('manajer')
+                                    <a href="/hitung/{{ $tanggal }}" class="btn btn-primary">Hitung Semua</a>
+                                @endcan
+
                             </div>
                         </div>
 

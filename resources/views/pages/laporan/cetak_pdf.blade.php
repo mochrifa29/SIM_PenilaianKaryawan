@@ -77,7 +77,7 @@
                 <th>Skor</th>
                 <th>Status</th>
             </tr>
-            <tr class="items">
+            <tr class="items" align='center'>
                 @foreach ($laporan as $item)
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->penilaian->karyawan->nama }}</td>

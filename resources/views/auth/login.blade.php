@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="/login/all.min.css" rel="stylesheet" type="text/css">
@@ -74,11 +74,7 @@
                                         <hr>
 
                                     </form>
-                                    <hr>
-
-                                    <div class="text-center">
-                                        <a class="small" href="/register">Create an Account!</a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

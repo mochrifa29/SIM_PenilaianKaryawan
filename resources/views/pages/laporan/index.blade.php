@@ -28,7 +28,7 @@
                                 <tbody>
                                     @foreach ($laporan as $item)
                                         <tr>
-                                            <td>{{ date('Y', strtotime($item->tanggal)) }}</td>
+                                            <td>{{ date('d M Y', strtotime($item->tanggal)) }}</td>
                                             <td>
                                                 <a href="/laporan/{{ $item->id }}" class="btn btn-success ">detail</a>
 

@@ -19,6 +19,26 @@ class UserController extends Controller
         return view('pages.user.index',$data);
     }
 
+    public function profile($email){
+        $data = [
+            'title' => 'Profile',
+            'profile' => User::where('email',$email)->first()
+        ];
+        return view('pages.profile.index',$data);
+    }
+
+    public function ubah_password(Request $request,$email){
+        $request->validate([
+            'password_baru' => 'required',
+        ]);
+
+        User::where('email',$email)->update([
+            'password' => bcrypt($request->password_baru) ,
+        ]);
+
+        return redirect('/user')->with('success', 'Password Berhasil Diubah');
+    }
+
     /**
      * Show the form for creating a new resource.
      */

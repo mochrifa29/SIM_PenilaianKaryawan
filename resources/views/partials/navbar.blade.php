@@ -27,13 +27,12 @@
                                  <div class="u-text">
                                      <h4>{{ Auth::user()->name }}</h4>
                                      <p class="text-muted">{{ Auth::user()->email }}</p>
-                                     <a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
                                  </div>
                              </div>
                          </li>
                          <li>
                              <div class="dropdown-divider"></div>
-                             <a class="dropdown-item" href="#">My Profile</a>
+                             <a class="dropdown-item" href="/profile/{{ Auth::user()->email }}">My Profile</a>
                              <a class="dropdown-item" href="/logout">Logout</a>
                          </li>
                      </div>

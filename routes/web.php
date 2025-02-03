@@ -4,17 +4,20 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PenilaianController;
-use App\Http\Controllers\PeriodePenilaianController;
 use App\Http\Controllers\UserController;
-use App\Models\Periode_penilaian;
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class,'logout']);
     Route::get('/dashboard', [DashboardController::class,'index']);
+    Route::get('/profile/{email}',[UserController::class, 'profile']);
+    Route::get('/ubah_password/{email}',[UserController::class, 'ubah_password']);
     Route::resource('/user', UserController::class);
     Route::resource('/karyawan', KaryawanController::class);
+    Route::resource('/kriteria', KriteriaController::class);
 
 
     Route::get('/cek_karyawan/{divisi}', [PenilaianController::class, 'cek_karyawan']);

@@ -20,8 +20,8 @@ class LaporanController extends Controller
 
         $data = [
             'title' => 'Laporan Penilaian',
-            'laporan' => Laporan::groupBy(DB::raw('YEAR(tanggal)'))->get(),
-            'tahun' => Laporan::whereYear('tanggal',date('Y'))->groupBy(DB::raw('YEAR(tanggal)'))->get()
+            'laporan' => Laporan::groupBy('tanggal')->get(),
+            'tahun' => Laporan::whereYear('tanggal',date('Y'))->groupBy('tanggal')->get()
            ];
 
         return view('pages.laporan.index',$data);
@@ -64,7 +64,7 @@ class LaporanController extends Controller
         $tanggal = date('Y', strtotime($laporan->tanggal));
         $data = [
             'title' => 'Detail Laporan Penilaian',
-            'periode' => $tanggal,
+            'tanggal' => $tanggal,
             'laporan' => Laporan::whereYear('tanggal',$tanggal)->get()
         ];
 
