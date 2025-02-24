@@ -77,17 +77,18 @@
                 <th>Skor</th>
                 <th>Status</th>
             </tr>
-            <tr class="items" align='center'>
-                @foreach ($laporan as $item)
+            @foreach ($laporan as $item)
+                <tr class="items">
+
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->penilaian->karyawan->nama }}</td>
                     <td>{{ $item->penilaian->absensi }}</td>
                     <td>{{ $item->penilaian->produksi }}</td>
                     <td>{{ $item->skor }}</td>
                     <td>{{ $item->status_karyawan }}</td>
-            </tr>
+                </tr>
             @endforeach
-            </tr>
+
         </table>
     </div>
 

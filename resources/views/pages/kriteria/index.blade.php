@@ -34,7 +34,6 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->kriteria }}</td>
                                             <td>{{ $item->bobot }}</td>
-
                                             <td>
                                                 <div class="form-button-action">
                                                     <form action="/kriteria/{{ $item->id }}" method="post">
@@ -45,6 +44,9 @@
                                                                 class="fa fa-trash text-danger"></i></button>
                                                     </form>
 
+                                                    <a style="margin-left: 20px"
+                                                        href="/kriteria/{{ $item->id }}/edit"><i
+                                                            class="fa fa-edit text-warning"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

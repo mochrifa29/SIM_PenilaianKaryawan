@@ -36,6 +36,7 @@ class KaryawanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'tanggal_masuk' => 'required',
             'nip' => 'required',
             'nama' => 'required',
             'no_telpon' => 'required|min:12',
@@ -44,6 +45,7 @@ class KaryawanController extends Controller
         ]);
 
         Karyawan::create([
+            'tanggal_masuk' => $request->tanggal_masuk,
             'nip' => $request->nip,
             'nama' => $request->nama,
             'no_telpon' => $request->no_telpon,
@@ -83,6 +85,7 @@ class KaryawanController extends Controller
     {
 
         $request->validate([
+            'tanggal_masuk' => 'required',
             'nip' => 'required',
             'nama' => 'required', 
             'no_telpon' => 'required',
@@ -92,10 +95,12 @@ class KaryawanController extends Controller
 
         
         Karyawan::where('id',$karyawan->id)->update([
+            'tanggal_masuk'=> $request->tanggal_masuk,
+            'nip'         => $request->nip,
             'nama'         => $request->nama,
-            'no_telpon'   => $request->no_telpon,
-            'divisi'         => $request->divisi,
-            'alamat'         => $request->alamat
+            'no_telpon'    => $request->no_telpon,
+            'divisi'       => $request->divisi,
+            'alamat'       => $request->alamat
         ]);
 
         return redirect('/karyawan')->with('success', 'Data Berhasil Diubah');

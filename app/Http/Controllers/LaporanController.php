@@ -30,8 +30,8 @@ class LaporanController extends Controller
     public function cetak_laporan($tanggal){
 
         $data = [
-            'laporan' => Laporan::whereYear('tanggal',$tanggal)->get(),
-            'tanggal' => Laporan::whereYear('tanggal',$tanggal)->groupBy(DB::raw('YEAR(tanggal)'))->first()
+            'laporan' => Laporan::where('tanggal',$tanggal)->get(),
+            'tanggal' => Laporan::where('tanggal',$tanggal)->groupBy('tanggal')->first()
            
         ];
         $pdf = FacadePdf::loadView('pages/laporan/cetak_pdf',$data);
@@ -60,12 +60,11 @@ class LaporanController extends Controller
      */
     public function show(Laporan $laporan)
     {
-        $laporan = Laporan::where('id',$laporan->id)->first();
-        $tanggal = date('Y', strtotime($laporan->tanggal));
+        $tanggal = Laporan::where('id',$laporan->id)->first();
         $data = [
             'title' => 'Detail Laporan Penilaian',
-            'tanggal' => $tanggal,
-            'laporan' => Laporan::whereYear('tanggal',$tanggal)->get()
+            'tanggal' => $tanggal->tanggal,
+            'laporan' => Laporan::where('tanggal',$tanggal->tanggal)->get()
         ];
 
         return view('pages.laporan.detail',$data);

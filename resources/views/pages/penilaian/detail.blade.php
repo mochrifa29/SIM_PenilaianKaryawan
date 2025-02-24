@@ -39,6 +39,7 @@
                                         <th>Kehadiran</th>
                                         <th>Produksi</th>
                                         <th>Status</th>
+
                                     </tr>
                                 </thead>
 
@@ -56,6 +57,7 @@
                                                     <span class="badge badge-success">{{ $item->status }}</span>
                                                 @endif
                                             </td>
+
                                         </tr>
                                     @endforeach
 

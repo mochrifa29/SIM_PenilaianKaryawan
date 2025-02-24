@@ -28,9 +28,11 @@ class PenilaianController extends Controller
         return view('pages.penilaian.index',$data);
     }
 
-    public function hitung_skor($tahun){
+    public function hitung_skor($tanggal){
         
-        $data = Penilaian::whereYear('tanggal_penilaian',$tahun)->get();
+      
+        $data = Penilaian::where('tanggal_penilaian',$tanggal)->get();
+
         $kehadiran = Kriteria::where('kriteria','Kehadiran')->first();
         $produksi = Kriteria::where('kriteria','Produksi')->first();
         $bobot_k = $kehadiran->bobot/100; //0,2
@@ -38,27 +40,25 @@ class PenilaianController extends Controller
         $skor=0;
         foreach ($data as $key => $value) {
 
-       // absensi 60*0,2 = 12
-       // produksi 20*0,8 = 16
-       //12+16 = 28/2 = 14
+          
                 $skor =(($value->absensi * $bobot_k) + ($value->produksi * $bobot_p))/2;
 
-              $status = $skor >= 50 ? 'Di Perpanjang' : 'Tidak Di Perpanjang';
-              
-              
-              Laporan::create([
-                'tanggal' => $value->tanggal_penilaian,
-                'penilaian_id' => $value->id,
-                'skor' => $skor,
-                'status_karyawan' => $status
-              ]);
-
-              Penilaian::where('id',$value->id)->update([
-                'status' => 'Sudah dinilai'
-              ]);
+                $status = $skor >= 80 ? 'Di Perpanjang' :'Tidak Di Perpanjang';
+                
+                Laporan::create([
+                  'tanggal' => $value->tanggal_penilaian,
+                  'penilaian_id' => $value->id,
+                  'skor' => $skor,
+                  'status_karyawan' => $status
+                ]);
+  
+                Penilaian::where('id',$value->id)->update([
+                  'status' => 'Sudah dinilai'
+                ]);
+               
         }
 
-        return redirect('/laporan')->with('success', 'Data Karyawan Berhasil Dinilai');
+        return redirect('/laporan')->with('success', 'Data karyawan berhasil dinilai');
 
 
     }
@@ -174,6 +174,6 @@ class PenilaianController extends Controller
      */
     public function destroy(Penilaian $penilaian)
     {
-        //
+       
     }
 }

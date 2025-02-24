@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Kriteria::create([
-            'kriteria' => 'Kehadiran',
+            'kriteria' =>'Kehadiran',
             'bobot' => 20
         ]);
 

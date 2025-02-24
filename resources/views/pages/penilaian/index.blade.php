@@ -27,6 +27,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Tanggal</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -37,7 +38,15 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ date('d M Y', strtotime($item->tanggal_penilaian)) }}</td>
                                             <td>
-                                                <a href="/penilaian/{{ $item->id }}" class="btn btn-success ">detail</a>
+                                                @if ($item->status == 'Belum dinilai')
+                                                    <span class="badge badge-danger">{{ $item->status }}</span>
+                                                @elseif ($item->status == 'Sudah dinilai')
+                                                    <span class="badge badge-success">{{ $item->status }}</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="/penilaian/{{ $item->id }}"
+                                                    class="btn btn-success btn-sm">detail</a>
                                             </td>
                                         </tr>
                                     @endforeach

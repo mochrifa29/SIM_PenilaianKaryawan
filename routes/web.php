@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/form_penilaian/{id}',[PenilaianController::class, 'form_penilaian']);
     
-    Route::get('/hitung/{tahun}',[PenilaianController::class, 'hitung_skor']);
+    Route::get('/hitung/{tanggal}',[PenilaianController::class, 'hitung_skor']);
     
     Route::resource('/penilaian', PenilaianController::class);
 

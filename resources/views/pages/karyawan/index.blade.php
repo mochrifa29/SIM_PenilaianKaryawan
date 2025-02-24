@@ -22,6 +22,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Tanggal Masuk</th>
                                         <th>NIP</th>
                                         <th>Name</th>
                                         <th>No Telpon</th>
@@ -35,6 +36,7 @@
                                     @foreach ($karyawan as $item)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
+                                            <td>{{ date('d M Y', strtotime($item->tanggal_masuk)) }}</td>
                                             <td>{{ $item->nip }}</td>
                                             <td>{{ $item->nama }}</td>
                                             <td>{{ $item->no_telpon }}</td>

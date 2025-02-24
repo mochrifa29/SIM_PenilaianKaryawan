@@ -24,17 +24,23 @@
                                         @enderror
 
                                     </div>
-                                    <div class="form-group">
-                                        <label for="email2">Bobot</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" name="bobot" value="{{ old('bobot') }}"
-                                                class="form-control" aria-describedby="basic-addon2" />
-                                            <span class="input-group-text">%</span>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <div class="form-group">
+                                                <label for="email2">Bobot</label>
+                                                <div class="input-group mb-3">
+                                                    <input type="text" name="bobot" value="{{ old('bobot') }}"
+                                                        class="form-control" aria-describedby="basic-addon2" />
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                                @error('bobot')
+                                                    <small id="emailHelp2"
+                                                        class="form-text text-danger">{{ $message }}</small>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        @error('bobot')
-                                            <small id="emailHelp2" class="form-text text-danger">{{ $message }}</small>
-                                        @enderror
                                     </div>
+
 
 
                                 </div>

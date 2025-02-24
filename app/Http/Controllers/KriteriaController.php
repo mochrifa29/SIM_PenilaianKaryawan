@@ -59,26 +59,45 @@ class KriteriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kriteria $kriteria)
+    public function edit($id)
     {
-        //
+        $data = [
+            'title' => 'Form Ubah Karyawan',
+            'kriteria' => Kriteria::find($id)
+        ];
+
+        return view('pages.kriteria.form_ubah', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kriteria $kriteria)
+    public function update(Request $request,$id)
     {
-        //
+
+        $request->validate([
+            'kriteria' => 'required',
+            'bobot' => 'required',
+        ]);
+
+        
+        Kriteria::where('id',$id)->update([
+            'kriteria'=> $request->kriteria,
+            'bobot'         => $request->bobot
+        ]);
+
+        return redirect('/kriteria')->with('success', 'Data Berhasil Diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kriteria $kriteria)
+
+  
+    public function destroy($id)
     {
-        $kriteria = Kriteria::find($kriteria->id);
-        $kriteria->delete();
+        $Kriteria = Kriteria::find($id);
+        $Kriteria->delete();
         return redirect('/kriteria')->with('success', 'Data Berhasil Dihapus');
     }
 }
